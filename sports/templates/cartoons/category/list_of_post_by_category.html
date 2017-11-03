@@ -1,0 +1,113 @@
+{% extends "personal/header.html" %}
+{% load staticfiles %}
+{% block content %} 
+
+<div class='row'>
+  <div id='overlay'> 
+    <div class='spinner'>
+    </div>
+  </div>
+  <div class="col-xs-8">
+    <video width="950"  controls id="myVideo">
+    </video> 
+  </div>
+  <div class="col-xs-1">
+  </div>
+
+  <div class="col-xs-3">
+    <div class="col_primary">
+      <div class="col_primary__inner">
+        {% for posts in post_by_category %} 
+          <div class="col_tile">
+            <a href="{{posts.get_absolute_url}}">
+              <div class="col_tile__media"> 
+                <img class="col_tile__img"  src= "{{posts.thumbnail.url}}" alt="" > 
+              </div>
+              <div class="col_tile__details">
+                <div class="col_tile__title">
+                  {{posts.title}}
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+var overlay = document.getElementById("overlay");
+var videoSource = {{li|safe}};
+var videoCount = videoSource.length;
+var video = document.getElementById("myVideo");
+var i = 0; // define i
+ 
+function videoPlay(videoNum){
+    document.getElementById("myVideo").setAttribute("src", videoSource[videoNum]);
+    document.getElementById("myVideo").load();
+    document.getElementById("myVideo").play();
+    document.getElementById("myVideo").play();
+}
+function videoClose(videoNum) {
+    
+    document.getElementById("myVideo").close();
+}
+document.getElementById('myVideo').addEventListener('canplay', function(){
+  overlay.style.display = 'none';
+},false);
+
+
+document.getElementById('myVideo').addEventListener('ended', myHandler, false);
+videoPlay(0); // play the video
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+//For fullscreen of video on double click
+document.ondblclick = function(){
+    if(video.requestFullscreen){
+        video.requestFullscreen();
+    }else if(video.mozRequestFullScreen){
+        video.mozRequestFullScreen();
+    }else if(video.webkitRequestFullscreen){
+        video.webkitRequestFullscreen();
+  }
+};
+
+//For pausing video with spacebar
+document.onkeypress = function(e){
+    if((e || window.event).keyCode === 32){
+        video.paused ? video.play() : video.pause();
+    }
+};
+//For pausing video with single click
+video.addEventListener('click', function () {
+        if (video.paused == false) {
+            video.pause();
+            video.firstChild.nodeValue = 'Play';
+        } else {
+            video.play();
+            video.firstChild.nodeValue = 'Pause';
+        }
+    });
+
+
+//sleep in between before moving to next video
+async function myHandler() {
+    i++;
+    await sleep(2000);
+    if (i == (videoCount)) {
+       videoClose(i-1);
+    } else {
+        videoPlay(i);
+    }
+}
+ </script>
+
+	
+
+{% endblock %}
+

@@ -1,0 +1,28 @@
+{% extends "personal/header.html" %}
+{% load staticfiles %}
+{% block content %} 
+ 
+
+  
+<div class='row'>
+  <div class="row_primary">
+    <div class="row_primary__inner">
+      {% for categories in category %}
+        <div class="tile">
+          <a href="{{categories.get_absolute_url}}">
+            <div class="tile__media"> 
+              <img class="tile__img"  src= "{{categories.thumbnail.url}}" alt="" > 
+            </div>
+            <div class="tile__details">
+              <div class="tile__title">
+                {{categories.name}}
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+

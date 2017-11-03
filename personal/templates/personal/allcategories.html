@@ -1,0 +1,210 @@
+
+{% extends "personal/header.html" %}
+
+{% block content %}
+
+<div class="row">
+	<a href="/punjabi_movies"> 
+		<h3>Punjabi Movies
+			<span class="glyphicon glyphicon-menu-right" aria-hidden="true">
+			</span>
+		</h3> 
+	</a>
+	<div class="row_primary">
+	  	<div class="row_primary__inner">
+			{% for category in punjabi_movies_cat %}
+				<div class="tile">
+					<a href="{{category.get_absolute_url}}">
+	        			<div class="tile__media">	
+							<img class="tile__img"  src= "{{category.thumbnail.url}}" alt="" > 
+						</div>
+	        			<div class="tile__details">
+	          				<div class="tile__title">
+								{{category.name}}
+					 		</div>
+	        			</div>
+	          		</a>
+	      		</div>	   
+			{% endfor %}
+		</div>
+	</div>
+	
+	<a href="/stand_up"> 
+		<h3>Standup Comedy
+			<span class="glyphicon glyphicon-menu-right" aria-hidden="true">
+			</span>
+		</h3> 
+	</a>
+	<div class="row_primary">
+	  	<div class="row_primary__inner">
+			{% for category in stand_up_cat %}
+				<div class="tile">
+					<a href="{{category.get_absolute_url}}">
+	        			<div class="tile__media">	
+							<img class="tile__img"  src= "{{category.thumbnail.url}}" alt="" > 
+						</div>
+	        			<div class="tile__details">
+	          				<div class="tile__title">
+								{{category.name}}
+					 		</div>
+	        			</div>
+	          		</a>
+	      		</div>	   
+			{% endfor %}
+		</div>
+	</div>
+
+	<a href="/trending_movies"> 
+		<h3>Trending Movies
+			<span class="glyphicon glyphicon-menu-right" aria-hidden="true">
+			</span>
+		</h3> 
+	</a>
+	<div class="row_primary">
+	  	<div class="row_primary__inner">
+			{% for category in trending_movies_cat %}
+				<div class="tile">
+					<a href="{{category.get_absolute_url}}">
+	        			<div class="tile__media">	
+							<img class="tile__img"  src= "{{category.thumbnail.url}}" alt="" > 
+						</div>
+	        			<div class="tile__details">
+	          				<div class="tile__title">
+								{{category.name}}
+					 		</div>
+	        			</div>
+	          		</a>
+	      		</div>	   
+			{% endfor %}
+		</div>
+	</div>
+
+	<a href="/shows"> 
+		<h3>Shows
+			<span class="glyphicon glyphicon-menu-right" aria-hidden="true">
+			</span>
+		</h3> 
+	</a>
+	
+	<div class="row_primary">
+		<div class="wrapper">
+		<span class="glyphicon glyphicon-menu-left"></span>
+	</div>
+	
+		<div class="row_primary__inner">
+			{% for category in shows_cat %}
+				<div class="tile">
+					<a href="{{category.get_absolute_url}}">
+	        			<div class="tile__media">	
+							<img class="tile__img"  src= "{{category.thumbnail.url}}" alt="" > 
+						</div>
+	        			<div class="tile__details">
+	          				<div class="tile__title">
+								{{category.name}}
+					 		</div>
+	        			</div>
+	          		</a>
+	      		</div>	   
+			{% endfor %}
+		</div>
+		<div class="wrapper">
+		<span class="glyphicon glyphicon-menu-right"></span>
+	</div>
+	</div>
+	
+	<a href="/cartoons"> 
+		<h3>Cartoons 
+			<span class="glyphicon glyphicon-menu-right" aria-hidden="true">
+			</span>
+		</h3> 
+	</a>
+	<div class="row_primary">
+	  	<div class="row_primary__inner">
+			{% for category in cartoon_cat %}
+				<div class="tile">
+					<a href="{{category.get_absolute_url}}">
+	        			<div class="tile__media">	
+							<img class="tile__img"  src= "{{category.thumbnail.url}}" alt="" > 
+						</div>
+	        			<div class="tile__details">
+	          				<div class="tile__title">
+								{{category.name}}
+					 		</div>
+	        			</div>
+	          		</a>
+	      		</div>	   
+			{% endfor %}
+		</div>
+	</div>
+
+	<a href="/sports"> 
+		<h3>Sports 
+			<span class="glyphicon glyphicon-menu-right" aria-hidden="true">
+			</span>
+		</h3> 
+	</a>
+	<div class="row_primary">
+	  	<div class="row_primary__inner">
+			{% for category in sports_cat %}
+				<div class="tile">
+					<a href="{{category.get_absolute_url}}">
+	        			<div class="tile__media">	
+							<img class="tile__img"  src= "{{category.thumbnail.url}}" alt="" > 
+						</div>
+	        			<div class="tile__details">
+	          				<div class="tile__title">
+								{{category.name}}
+					 		</div>
+	        			</div>
+	          		</a>
+	      		</div>	   
+			{% endfor %}
+		</div>
+	</div>
+	<a href="/news_and_politics"> 
+		<h3>News and Politics
+			<span class="glyphicon glyphicon-menu-right" aria-hidden="true">
+			</span>
+		</h3> 
+	</a>
+	<div class="row_primary">
+	  	<div class="row_primary__inner">
+			{% for category in news_cat %}
+				<div class="tile">
+					<a href="{{category.get_absolute_url}}">
+	        			<div class="tile__media">	
+							<img class="tile__img"  src= "{{category.thumbnail.url}}" alt="" > 
+						</div>
+	        			<div class="tile__details">
+	          				<div class="tile__title">
+								{{category.name}}
+					 		</div>
+	        			</div>
+	          		</a>
+	      		</div>	   
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+
+</body>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCQZceYhw5MYe7QclUnj0F4EwG7aB9i4zg",
+    authDomain: "litchi-ce478.firebaseapp.com",
+    databaseURL: "https://litchi-ce478.firebaseio.com",
+    projectId: "litchi-ce478",
+    storageBucket: "litchi-ce478.appspot.com",
+    messagingSenderId: "410772056783"
+  };
+  firebase.initializeApp(config);
+</script>
+{% endblock %}
+
+
+
