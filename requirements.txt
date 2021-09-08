@@ -24,7 +24,7 @@ tabulate==0.7.5
 termcolor==1.1.0
 wcwidth==0.1.7
 websocket-client==0.44.0
-Pillow==4.2.1
+Pillow==8.3.2
 django-storages==1.6.3
 boto==2.48.0
 
